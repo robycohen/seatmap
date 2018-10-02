@@ -1,5 +1,5 @@
 # Seatmap
-Simple android app dummy untuk membuat seatmap kereta
+Simple android app dummy seatmap kereta
 
 Data seatmap yg digunakan dari contoh response api tiket.com 
 link: http://docs.tiket.com/#get-train-seat-map-362
