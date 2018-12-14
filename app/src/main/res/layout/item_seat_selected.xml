@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:padding="5dp">
+    android:id="@+id/mainLayout"
+    android:padding="5dp"
+    android:layout_width="@dimen/seat_size"
+    android:layout_height="@dimen/seat_size">
 
     <RelativeLayout
-        android:id="@id/imgSeat"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:layout_centerHorizontal="true">
+        android:id="@+id/imgSeat"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true">
 
         <RelativeLayout
             android:layout_width="match_parent"

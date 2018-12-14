@@ -4,6 +4,7 @@ import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
@@ -67,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(gridLayoutManager);
         adapter = new BaseRecyclerAdapter(strukturKursi).onCreateVHolder(new SeatMapBindView());
         recyclerView.setAdapter(adapter);
+        recyclerView.setHasFixedSize(true);
         recyclerView.setNestedScrollingEnabled(false);
 
         //adapter.setNumberSelected(numberSelected);
@@ -167,7 +169,7 @@ public class MainActivity extends AppCompatActivity {
         }
         int row = listSeatMap.get(selectedIndex).
                 getStrukturList().get(listSeatMap.get(selectedIndex).getStrukturList().size() - 1).getBaris();
-        int colums = getColumsCount(listSeatMap.get(selectedIndex).getStrukturList());
+        final int colums = getColumsCount(listSeatMap.get(selectedIndex).getStrukturList());
         Object[][] ob11 = (Object[][]) Array.newInstance(Object.class, new int[]{row, colums});
         for (SeatMapBean.StrukturKursi da : listSeatMap.get(selectedIndex).getStrukturList()) {
             ob11[da.getBaris() - 1][da.getKolom() - 1] = da;
@@ -177,9 +179,16 @@ public class MainActivity extends AppCompatActivity {
                 strukturKursi.add((SeatMapBean.StrukturKursi) data);
             }
         }
-        gridLayoutManager.setSpanCount(colums);
-        spinnerAdapter.notifyDataSetChanged();
-        adapter.notifyDataSetChanged();
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                recyclerView.getLayoutParams().width=getResources().getDimensionPixelSize(R.dimen.seat_size)*colums;
+                gridLayoutManager.setSpanCount(colums);
+                spinnerAdapter.notifyDataSetChanged();
+                adapter.notifyDataSetChanged();
+            }
+        });
+
     }
 
 

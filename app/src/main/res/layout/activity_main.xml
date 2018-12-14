@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
 
     <android.support.v4.widget.NestedScrollView
         android:id="@+id/scrollView"
@@ -50,12 +50,12 @@
                     app:contentPadding="5dp">
 
                     <Spinner
-                        android:minHeight="30dp"
                         android:id="@+id/gerbongSpinner"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@color/white"
                         android:gravity="center"
+                        android:minHeight="30dp"
                         android:minWidth="200dp"
                         android:textAlignment="center" />
                 </android.support.v7.widget.CardView>
@@ -83,12 +83,12 @@
                             android:background="@drawable/seat_aktif" />
 
                         <TextView
-                            android:textColor="@color/black"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="3dp"
                             android:text="AKTIF"
                             android:textAllCaps="true"
+                            android:textColor="@color/black"
                             android:textSize="10dp" />
                     </LinearLayout>
 
@@ -105,12 +105,12 @@
                             android:background="@drawable/seat_available" />
 
                         <TextView
-                            android:textColor="@color/black"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="3dp"
                             android:text="Tersedia"
                             android:textAllCaps="true"
+                            android:textColor="@color/black"
                             android:textSize="10dp" />
                     </LinearLayout>
 
@@ -127,34 +127,31 @@
                             android:background="@drawable/seat_unvailable" />
 
                         <TextView
-                            android:textColor="@color/black"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="3dp"
                             android:text="TERISI"
                             android:textAllCaps="true"
+                            android:textColor="@color/black"
                             android:textSize="10dp" />
                     </LinearLayout>
                 </LinearLayout>
 
                 <View style="@style/separator_vertical" />
             </LinearLayout>
-
-            <LinearLayout
+            <RelativeLayout
+                android:padding="20dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:padding="20dp">
+                android:layout_height="wrap_content">
+            <android.support.v7.widget.RecyclerView
+                android:layout_centerInParent="true"
+                android:clipToPadding="false"
+                android:id="@+id/recyclerView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            </RelativeLayout>
 
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/recyclerView"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:clipToPadding="false"
-                    android:paddingLeft="20dp"
-                    android:paddingRight="20dp" />
-            </LinearLayout>
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
+
 </RelativeLayout>
